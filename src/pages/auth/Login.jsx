@@ -5,6 +5,19 @@ import { Button } from "antd";
 import { GoogleOutlined, MailOutlined } from "@ant-design/icons";
 import { auth, googleAuthProvider } from "../../firebase";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const createOrUpdateUser = async (authToken) => {
+  return await axios.post(
+    `${process.env.REACT_APP_API}/create-or-update-user`,
+    {},
+    {
+      headers: {
+        authToken,
+      },
+    }
+  );
+};
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -25,6 +38,9 @@ const Login = ({ history }) => {
       const result = await auth.signInWithEmailAndPassword(email, password);
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
+      createOrUpdateUser(idTokenResult.token)
+        .then((res) => console.log("Create ot update"))
+        .catch();
 
       dispatch({
         type: "LOGGED_IN_USER",
