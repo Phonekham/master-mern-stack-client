@@ -7,13 +7,13 @@ import { auth, googleAuthProvider } from "../../firebase";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const createOrUpdateUser = async (authToken) => {
+const createOrUpdateUser = async (authtoken) => {
   return await axios.post(
     `${process.env.REACT_APP_API}/create-or-update-user`,
     {},
     {
       headers: {
-        authToken,
+        authtoken,
       },
     }
   );
