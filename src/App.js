@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/nav/Header";
+import UserRoute from "./components/routes/UserRoute";
 import { auth } from "./firebase";
 import { currentUser } from "./functions/auth";
 import ForgotPassword from "./pages/auth/ForgetPassword";
@@ -10,6 +11,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import RegisterComplete from "./pages/auth/RegisterComplete";
 import Home from "./pages/Home";
+import History from "./pages/user/History";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +50,7 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/register/complete" component={RegisterComplete} />
         <Route exact path="/forgot/password" component={ForgotPassword} />
+        <UserRoute exact path="/user/history" component={History} />
       </Switch>
     </>
   );
