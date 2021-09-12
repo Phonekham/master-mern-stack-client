@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/nav/Header";
+import AdminRoute from "./components/routes/AdminRoute";
 import UserRoute from "./components/routes/UserRoute";
 import { auth } from "./firebase";
 import { currentUser } from "./functions/auth";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import ForgotPassword from "./pages/auth/ForgetPassword";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -55,6 +57,7 @@ function App() {
         <UserRoute exact path="/user/history" component={History} />
         <UserRoute exact path="/user/password" component={Password} />
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
+        <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
       </Switch>
     </>
   );
