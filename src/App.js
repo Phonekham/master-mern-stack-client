@@ -8,6 +8,8 @@ import UserRoute from "./components/routes/UserRoute";
 import { auth } from "./firebase";
 import { currentUser } from "./functions/auth";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import CategoryCreate from "./pages/admin/Category/CategoryCreate";
+import CategoryUpdate from "./pages/admin/Category/CategoryUpdate";
 import ForgotPassword from "./pages/auth/ForgetPassword";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -58,6 +60,12 @@ function App() {
         <UserRoute exact path="/user/password" component={Password} />
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
+        <AdminRoute exact path="/admin/category" component={CategoryCreate} />
+        <AdminRoute
+          exact
+          path="/admin/category/:slug"
+          component={CategoryUpdate}
+        />
       </Switch>
     </>
   );
