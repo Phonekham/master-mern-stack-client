@@ -10,6 +10,7 @@ import { currentUser } from "./functions/auth";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import CategoryCreate from "./pages/admin/Category/CategoryCreate";
 import CategoryUpdate from "./pages/admin/Category/CategoryUpdate";
+import ProductCreate from "./pages/admin/product/ProductCreate";
 import SubCreate from "./pages/admin/Sub/SubCreate";
 import SubUpdate from "./pages/admin/Sub/SubUpdate";
 import ForgotPassword from "./pages/auth/ForgetPassword";
@@ -70,6 +71,7 @@ function App() {
           path="/admin/category/:slug"
           component={CategoryUpdate}
         />
+        <AdminRoute exact path="/admin/product" component={ProductCreate} />
       </Switch>
     </>
   );
