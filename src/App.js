@@ -10,6 +10,8 @@ import { currentUser } from "./functions/auth";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import CategoryCreate from "./pages/admin/Category/CategoryCreate";
 import CategoryUpdate from "./pages/admin/Category/CategoryUpdate";
+import SubCreate from "./pages/admin/Sub/SubCreate";
+import SubUpdate from "./pages/admin/Sub/SubUpdate";
 import ForgotPassword from "./pages/auth/ForgetPassword";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -61,6 +63,8 @@ function App() {
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/category" component={CategoryCreate} />
+        <AdminRoute exact path="/admin/sub" component={SubCreate} />
+        <AdminRoute exact path="/admin/sub/:slug" component={SubUpdate} />
         <AdminRoute
           exact
           path="/admin/category/:slug"
