@@ -10,7 +10,9 @@ import { currentUser } from "./functions/auth";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import CategoryCreate from "./pages/admin/Category/CategoryCreate";
 import CategoryUpdate from "./pages/admin/Category/CategoryUpdate";
+import AllProducts from "./pages/admin/product/AllProducts";
 import ProductCreate from "./pages/admin/product/ProductCreate";
+import ProductUpdate from "./pages/admin/product/ProductUpdate";
 import SubCreate from "./pages/admin/Sub/SubCreate";
 import SubUpdate from "./pages/admin/Sub/SubUpdate";
 import ForgotPassword from "./pages/auth/ForgetPassword";
@@ -72,6 +74,12 @@ function App() {
           component={CategoryUpdate}
         />
         <AdminRoute exact path="/admin/product" component={ProductCreate} />
+        <AdminRoute exact path="/admin/products" component={AllProducts} />
+        <AdminRoute
+          exact
+          path="/admin/product/:slug"
+          component={ProductUpdate}
+        />
       </Switch>
     </>
   );
