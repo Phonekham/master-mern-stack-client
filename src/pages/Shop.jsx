@@ -10,6 +10,7 @@ import {
 import ProductCard from "../components/cards/ProductCard";
 import Star from "../components/forms/Star";
 import { getCategories } from "../functions/category";
+import { getSubs } from "../functions/sub";
 import {
   fetchProductsByFilter,
   getProductsByCount,
@@ -25,6 +26,8 @@ const Shop = () => {
   const [categoryIds, setCategoryIds] = useState([]);
   const [ok, setOk] = useState(false);
   const [star, setStar] = useState("");
+  const [subs, setSubs] = useState([]);
+  const [sub, setSub] = useState("");
 
   let dispatch = useDispatch();
   let { search } = useSelector((state) => ({ ...state }));
@@ -34,6 +37,8 @@ const Shop = () => {
     loadAllProducts();
     // fetch categories
     getCategories().then((res) => setCategories(res.data));
+    // fetch subcategories
+    getSubs().then((res) => setSubs(res.data));
   }, []);
 
   const fetchProducts = (arg) => {
@@ -143,6 +148,31 @@ const Shop = () => {
     </div>
   );
 
+  // 6. show products by sub category
+  const showSubs = () =>
+    subs.map((s) => (
+      <div
+        key={s._id}
+        onClick={() => handleSub(s)}
+        className="p-1 m-1 badge badge-secondary"
+        style={{ cursor: "pointer" }}
+      >
+        {s.name}
+      </div>
+    ));
+
+  const handleSub = (sub) => {
+    setSub(sub);
+    dispatch({
+      type: "SEARCH_QUERY",
+      payload: { text: "" },
+    });
+    setPrice([0, 0]);
+    setCategoryIds([]);
+    setStar("");
+    fetchProducts({ sub });
+  };
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -190,6 +220,19 @@ const Shop = () => {
               }
             >
               <div style={{ maringTop: "-10px" }}>{showStars()}</div>
+            </SubMenu>
+            {/* sub category */}
+            <SubMenu
+              key="4"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Sub Categories
+                </span>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+                {showSubs()}
+              </div>
             </SubMenu>
           </Menu>
         </div>
