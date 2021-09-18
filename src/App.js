@@ -29,6 +29,7 @@ import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
 import Cart from "./pages/Cart";
 import SideDrawer from "./components/drawer/SlideDrawer";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -92,6 +93,7 @@ function App() {
         <Route exact path="/sub/:slug" component={SubHome} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/cart" component={Cart} />
+        <UserRoute exact path="/checkout" component={Checkout} />
       </Switch>
     </>
   );
