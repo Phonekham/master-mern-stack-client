@@ -27,6 +27,8 @@ import SubHome from "./pages/sub/SubHome";
 import History from "./pages/user/History";
 import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
+import Cart from "./pages/Cart";
+import SideDrawer from "./components/drawer/SlideDrawer";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +61,7 @@ function App() {
   return (
     <>
       <Header />
+      <SideDrawer />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
@@ -88,6 +91,7 @@ function App() {
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/cart" component={Cart} />
       </Switch>
     </>
   );
